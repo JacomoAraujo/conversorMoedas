@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
+
+body{
+font-family: 'Oswald', sans-serif;
+background: linear-gradient(to bottom, #3498db,#0e3b58);
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column; /* Permite que UI seja responsiva, flexivel */
+justify-content: center; /* Um abaixo do outro*/
+align-items: center;
+min-height: 100vh;
+}
+ form{
+    background-color: rgba(255,255,255,0.8);
+    padding: 16px;
+    border-radius: 16px;
+    width: 30%;
+    box-shadow:0 4px 8px rgb(0,0,0,0.8);
+    
+ }
+ h1{
+    color:#fff;
+ }
+ input,select{
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    margin-top: 4px;
+    box-sizing: border-box;
+    
+ }
+ label{
+    display: block;
+    align-items: center;
+    
+ }
