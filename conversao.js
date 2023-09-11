@@ -4,7 +4,7 @@ async function obtemTaxas (moedaOrigem, moedaDestino) {
         const response = await fetch (url)
         const data = await response.json()
         let retorno = data [`${moedaOrigem}${moedaDestino}`].bid
-        resultado.textContent = retorno
+        return retorno
     }
     catch (error) {
         console.error(error)
@@ -16,7 +16,7 @@ async function calculaConversao(valor, moedaOrigem, moedaDestino){
     if (! isNaN(valorNumerico)){  //NaN = not a number
         resultado.textContent= "O valor tem que ser numérico e válido"
     }
-    if (moedaDestino && moedaOrigem && moedaOrigem !== moedaDestino){
+    if (valor > 0 && moedaDestino && moedaOrigem && moedaOrigem !== moedaDestino){
         const taxaConversao = await obtemTaxas(moedaOrigem, moedaDestino)
         const valorConvertido = (valorNumerico * taxaConversao).toFixed(2)
         resultado.textContent = `o valor convertido é ${moedaDestino} ${valorConvertido}`
@@ -31,6 +31,12 @@ const valor = document.getElementById('valor')
 const resultado = document.getElementById('resultado')
 
 
-moedaOrigem.addEventListener('change', ()=> { calculaConversao(valor.value, moedaOrigem.value, moedaDestino.value)});
-moedaDestino.addEventListener('change', ()=> { calculaConversao(valor.value, moedaOrigem.value, moedaDestino.value)});
-valor.addEventListener('input',()=> { calculaConversao(valor.value, moedaOrigem.value, moedaDestino.value)});
+moedaOrigem.addEventListener('change', ()=> { 
+    calculaConversao(valor.value, moedaOrigem.value, moedaDestino.value)
+});
+moedaDestino.addEventListener('change', ()=> {
+     calculaConversao(valor.value, moedaOrigem.value, moedaDestino.value)
+});
+valor.addEventListener('input',()=> { 
+calculaConversao(valor.value, moedaOrigem.value, moedaDestino.value)
+});
